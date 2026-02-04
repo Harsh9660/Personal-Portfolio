@@ -17,10 +17,10 @@ I'm an Associate AI/ML Developer with over 13 months of hands-on experience in m
 
 ## ✨ Features
 
-- **Fully Responsive:** Adapts seamlessly to all screen sizes, from mobile phones to desktops.
-- **Interactive UI:** Features smooth animations, hover effects, and an animated statistics counter that activates on scroll.
+- **Fully Responsive:** Adapts seamlessly to all screen sizes, with optimized grid layouts for mobile and desktop viewing.
+- **Interactive UI:** Features enhanced hover effects, smooth scroll animations, and a dynamic statistics counter that restarts whenever it scrolls into view.
 - **Comprehensive Sections:** Includes detailed sections for Professional Experience, Technical Skills, Featured Projects, and Contact Information.
-- **Modern Design:** A sleek, dark-themed UI with gradient accents and glassmorphism effects for a professional look.
+- **Modern Design:** A sleek, dark-themed UI with refined gradient accents, consistent color schemes, and glassmorphism effects for a professional look.
 - **Easy Navigation:** Implements smooth scrolling, a fixed header for constant access to navigation, and a "Back to Top" button.
 
 ---
