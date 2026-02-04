@@ -200,6 +200,11 @@
             gap: 8px;
             padding-left: 0;
             margin-left: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .logo i {
@@ -219,10 +224,26 @@
             font-weight: 500;
             transition: color 0.3s ease;
             font-size: clamp(0.9rem, 1.5vw, 1rem);
+            position: relative;
         }
 
         .nav-links a:hover {
             color: var(--light);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .mobile-menu-btn {
@@ -296,6 +317,7 @@
             background: var(--gradient);
             transform: translateY(-3px);
             border-color: transparent;
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
         }
 
         /* Experience Section */
@@ -316,6 +338,13 @@
             margin-bottom: 25px;
             border: 1px solid var(--border);
             backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(138, 43, 226, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
         }
 
         .timeline-date {
@@ -359,6 +388,12 @@
             border-radius: 12px;
             border: 1px solid var(--border);
             backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: rgba(138, 43, 226, 0.3);
         }
 
         .skill-list {
@@ -376,13 +411,23 @@
             font-size: 0.9rem;
             font-weight: 500;
             border: 1px solid rgba(138, 43, 226, 0.3);
+            transition: all 0.3s ease;
+            cursor: default;
         }
 
-        /* Projects Section */
+        .skill-tag:hover {
+            background-color: rgba(138, 43, 226, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.2);
+            border-color: var(--primary);
+        }
+
+        /* Projects Section - UPDATED with enhanced hover effects */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
+            align-items: stretch;
         }
 
         .project-card {
@@ -390,37 +435,146 @@
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border);
-            transition: transform 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
             backdrop-filter: blur(10px);
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Add gradient border effect on hover */
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 0%);
+            border-radius: 14px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(138, 43, 226, 0.2),
+                        0 0 0 1px rgba(138, 43, 226, 0.1);
+            border-color: transparent;
         }
 
+        /* Project content area */
         .project-content {
             padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
+        .project-content h3 {
+            margin-bottom: 15px;
+            color: var(--light);
+            font-size: clamp(1.2rem, 2vw, 1.4rem);
+        }
+
+        .project-content > p {
+            color: var(--gray-light);
+            margin-bottom: 20px;
+            flex-grow: 1;
+            min-height: 60px;
+        }
+
+        /* Project tech tags */
         .project-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin: 15px 0;
+            margin: 15px 0 25px 0;
         }
 
         .tech-tag {
-            background-color: rgba(39, 39, 42, 0.9);
-            color: var(--gray);
-            padding: 6px 12px;
+            background-color: rgba(138, 43, 226, 0.1);
+            color: var(--primary-light);
+            padding: 6px 14px;
             border-radius: 15px;
             font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .tech-tag {
+            background-color: rgba(138, 43, 226, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Project button container - FIXED ALIGNMENT */
+        .project-button-container {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            min-height: 52px; /* Fixed height for consistent alignment */
+        }
+
+        /* Ensure all buttons are same size */
+        .project-button-container .btn {
+            width: 100%;
+            justify-content: center;
+            padding: 12px 20px;
+            font-size: 0.95rem;
+            background: rgba(138, 43, 226, 0.1);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            color: var(--primary-light);
+            transition: all 0.3s ease;
+        }
+
+        .project-button-container .btn:hover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-3px);
+        }
+
+        /* Project card icon */
+        .project-card i {
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover i.fa-github {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        /* Add a subtle shine effect on hover */
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.05), 
+                transparent);
+            transition: left 0.7s ease;
+        }
+
+        .project-card:hover::after {
+            left: 100%;
         }
 
         /* Contact Section */
         .contact-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 25px;
             max-width: 800px;
             margin: 0 auto;
@@ -437,6 +591,18 @@
             border-radius: 12px;
             border: 1px solid var(--border);
             backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+            border-color: rgba(138, 43, 226, 0.5);
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: scale(1.1) rotate(10deg);
+            transition: transform 0.3s ease;
         }
 
         .contact-icon {
@@ -665,6 +831,16 @@
                 justify-content: center;
             }
 
+            /* Projects Section - Mobile adjustments */
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .project-card:hover {
+                transform: translateY(-5px);
+            }
+
             /* Sections */
             .section {
                 padding: 50px 0;
@@ -749,6 +925,20 @@
                 padding: 5px;
                 margin-right: 0;
             }
+
+            /* Projects Section - Mobile adjustments */
+            .project-content {
+                padding: 20px;
+            }
+            
+            .project-button-container {
+                min-height: 48px;
+            }
+            
+            .project-button-container .btn {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
         }
 
         @media (max-width: 360px) {
@@ -800,7 +990,7 @@
             <nav>
                 <div class="logo">
                     <i class="fas fa-robot"></i>
-                    HKP
+                    HP
                 </div>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#home">Home</a></li>
@@ -856,11 +1046,11 @@
         <div class="container">
             <div class="stats-container">
                 <div class="stat-item">
-                    <div class="stat-number" data-count="13">0+</div>
+                    <div class="stat-number" data-count="13" data-suffix="+">0+</div>
                     <div class="stat-label">Months Experience</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number" data-count="15">0+</div>
+                    <div class="stat-number" data-count="15" data-suffix="+">0+</div>
                     <div class="stat-label">Projects Completed</div>
                 </div>
                 <div class="stat-item">
@@ -961,7 +1151,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects-section section">
+    <section id="projects" class="section">
         <div class="container">
             <div class="section-title">
                 <h2>Featured Projects</h2>
@@ -978,7 +1168,8 @@
                             <span class="tech-tag">NLP</span>
                             <span class="tech-tag">Chatbot</span>
                         </div>
-                        <div style="margin-top: 20px;">
+                        <!-- UPDATED: Fixed button alignment container -->
+                        <div class="project-button-container">
                             <a href="https://github.com/Harsh9660/Vasuki_2.0" target="_blank" class="btn">
                                 <i class="fab fa-github"></i> View Repo
                             </a>
@@ -995,7 +1186,8 @@
                             <span class="tech-tag">ML Models</span>
                             <span class="tech-tag">Forecasting</span>
                         </div>
-                        <div style="margin-top: 20px;">
+                        <!-- UPDATED: Fixed button alignment container -->
+                        <div class="project-button-container">
                             <a href="https://github.com/Harsh9660/AI-Based-Car-Rental-Platform" target="_blank" class="btn">
                                 <i class="fab fa-github"></i> View Repo
                             </a>
@@ -1012,7 +1204,8 @@
                             <span class="tech-tag">ML</span>
                             <span class="tech-tag">Visualization</span>
                         </div>
-                        <div style="margin-top: 20px;">
+                        <!-- UPDATED: Fixed button alignment container -->
+                        <div class="project-button-container">
                             <a href="https://github.com/Harsh9660/Market-Intelligence" target="_blank" class="btn">
                                 <i class="fab fa-github"></i> View Repo
                             </a>
@@ -1169,21 +1362,30 @@
         });
 
         // Animated stats counter
+        let statIntervals = [];
+
         function animateStats() {
+            // Clear any running intervals
+            statIntervals.forEach(interval => clearInterval(interval));
+            statIntervals = [];
+
             const statNumbers = document.querySelectorAll('.stat-number');
             
             statNumbers.forEach(stat => {
                 const target = parseInt(stat.getAttribute('data-count'));
+                const suffix = stat.getAttribute('data-suffix') || '';
                 let current = 0;
                 const increment = target / 30;
+                
                 const timer = setInterval(() => {
                     current += increment;
                     if (current >= target) {
                         current = target;
                         clearInterval(timer);
                     }
-                    stat.textContent = Math.floor(current) + (stat.textContent.includes('+') ? '+' : '');
+                    stat.textContent = Math.floor(current) + suffix;
                 }, 50);
+                statIntervals.push(timer);
             });
         }
 
@@ -1194,7 +1396,9 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         animateStats();
-                        observer.unobserve(entry.target);
+                    } else {
+                        // Stop animation if scrolled away
+                        statIntervals.forEach(interval => clearInterval(interval));
                     }
                 });
             }, { threshold: 0.5 });
